@@ -18,7 +18,7 @@ The Super Tiny Compiler project has a great breakdown that will cover all the ba
 >
 > 3. *Code Generation* takes the transformed representation of the code and
 >    turns it into new code.
-From: [jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js#L103)f
+From: [jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js#L103)
 
 We generally don't need to worry about how Parsing or Code Generation is handled. The coolest part of the process is the Transformation, and what we use as a "more abstract representation of the code."
 
