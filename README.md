@@ -57,6 +57,10 @@ ESLint was the first JS linter to make this all about detecting AST patterns wit
 
 // TODO: add nested ternary example
 
+
+
+https://eslint.org/docs/developer-guide/working-with-rules
+
 ## Babel
 
 Babel is a compiler that translates any recent version of JS (ES2018) into an older version of JS (ES5) that most browsers understand without polyfills. It is powered by dozens of plugins that each handle a specific type of translation, transforming specific nodes for specific purposes.
