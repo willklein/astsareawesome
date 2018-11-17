@@ -1,8 +1,10 @@
 # ASTs Are Awesome
 
-## Background
+## Why You Should Read This
 
-We have some really great tools in JavaScript land, and there is a magic data structure underpinning them all. It also so happens that this data structure is the key to unlocking our own improvements to our developer experience.
+What if we could reduce the time and effort of writing code? What if we could share best practices and eliminate anti-patterns, without requiring code review or pair programming? What if we could uptake new language features, upgrade dependencies with breaking changes, or even _migrate_ to a different library without manually editing _any_ code???
+
+We can, by extending our favorite JavaScript tools. This is something **anyone** can learn and **put into action**. This site explains what is typically covered in an advanced-level computer science course, but in a focused, more accessible manner. We then relate what we learn to our tools, and look at how we can write our own plugins help everyone else who writes JavaScript be more effective developers.
 
 ## Compilers!
 
@@ -24,8 +26,8 @@ The Super Tiny Compiler project has a really wonderful explanation of compilers 
 
 Babel is a special kind of compiler, a source-to-source compiler, also known as a "transpiler." We can see each of the three primary stages in action.
 
-1. Babel takes in JavaScript and handles the _parsing_ for us, handling JavaScript that uses recent features (think ES2018).
-2. It _transforms_ the abstract representation, turning it into a representation that uses a more basic set of features.
+1. Babel takes in JavaScript and handles the _parsing_ for us, handling JavaScript that uses recent features (think ES2018), converting the code into an abstract representation.
+2. It _transforms_ the abstract representation, removing more recent features and and replacing them with a more basic set of features.
 3. It _generates_ JavaScript from the transformed representation, outputing code that is more widely understood by all browsers (think ES5).
 
 We generally don't need to worry about how Parsing or Code Generation is handled beyond this. The coolest part of the process is the Transformation, and what we use as a "more abstract representation of the code."
@@ -86,7 +88,7 @@ Most plugins care about one node type, but some subscribe to multiple types, eac
 
 ## Static Analysis, AKA Linting
 
-Linters are a fantastic way to get started. It's all about looking at nodes in a tree, and identifying patterns.
+Linters are a fantastic way to get started working with ASTs. It's all about looking at nodes in a tree and identifying patterns.
 
 ESLint was the first JS linter to make this all about detecting AST patterns with a plugin system. Each ESLint rule is its own plugin. One of my favorite examples is the nested ternary rule.
 
