@@ -42,7 +42,31 @@ Each node in the tree has three types of properties.
 2. It may have one or more properites its children can live. It may be a fixed property with one value, or a collection-oriented property with 0 or more children in an array.
 3. It may have any number of descriptive properties that describe the node.
 
-// TODO: expand above with examples
+#### An Example
+
+Let's consider the following code:
+
+```javascript
+var answer = 6 * 7;
+```
+
+This code is first broken down into an ordered collection of tokens: discrete elements of code that are like atoms in a molecule.
+
+```javascript
+["var", "answer", "=", "6", "*", "7"];
+```
+
+While we might associate a type with each of these tokens, we need a way to relate them to one another. Sequential order cannot give us a semantic understanding of how each token is connected.
+
+We can think of these tokens in the form of a tree:
+
+![AST example](assets/tree.png)
+
+The nodes are represented here by their type, in red: `VariableDeclaration`, `VariableDeclarator`, `Identifier`, `BinaryExpression`, and `Literal`. These are all on the node as a `type` property.
+
+The purple lines represent a parent-child relationship. The property where the child is referenced is in blue next to the line: `declarations`, `id`, `init`, `left`, and `right`.
+
+The other blue text with colons are the descriptive properties for the node above them: `kind: "var"` on the `VariableDeclaration`, `name: "answer"` on the `Identifier`, `operator: "*"` on the `BinaryExpression`, and `value: 6` and `value: 7` on the `Literal`s.
 
 ### Explore in ASTExplorer.net
 
