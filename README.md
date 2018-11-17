@@ -32,7 +32,7 @@ We generally don't need to worry about how Parsing or Code Generation is handled
 
 Read [The Super Tiny Compiler](https://github.com/jamiebuilds/the-super-tiny-compiler) by [@jamiebuilds](https://twitter.com/jamiebuilds) for more background on what a compiler does. For now, let's focus on...
 
-## Trees, Nodes, and ASTs
+## Introducing the AST
 
 The magic data structure that powers our favorite JavaScript tooling is the *A*bstract *S*yntax *T*ree. The AST is just a tree, and like other trees (the DOM, component hierarchy in React/Angular/Vue/etc), it starts with a root node. This node can have any number of children (0 or more) and those children can in turn have their own children.
 
