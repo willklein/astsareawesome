@@ -2,32 +2,35 @@
 
 ## Why You Should Read This
 
-What if we could reduce the time and effort of writing code? What if we could share best practices and eliminate anti-patterns, without requiring code review or pair programming? What if we could uptake new language features, upgrade dependencies with breaking changes, or even _migrate_ to a different library without manually editing _any_ code???
+What if it were possible to:
 
-We can, by extending our favorite JavaScript tools. This is something **anyone** can learn and **put into action**. This site explains what is typically covered in an advanced-level computer science course, but in a focused, more accessible manner. We then relate what we learn to our tools, and look at how we can write our own plugins help everyone else who writes JavaScript be more effective developers.
+- Reduce the time and effort of writing code?
+- Share best practices and eliminate anti-patterns, without requiring code review or pair programming?
+- Uptake new language features, upgrade dependencies with breaking changes, or even _migrate_ to a different library without manually editing _any_ code?
+
+We can (!), by extending our favorite JavaScript tools. This is something **anyone** can learn and **practice**. This site explains what is typically covered in an advanced-level computer science course, but in a focused, more accessible manner. We then relate what we learn to our tools, and look at how we can extend them with our own plugins, helping everyone be more effective developers.
 
 ## Compilers!
 
-The Super Tiny Compiler project has a really wonderful explanation of compilers to give us context.
+[The Super Tiny Compiler](https://github.com/jamiebuilds/the-super-tiny-compiler) by [@jamiebuilds](https://twitter.com/jamiebuilds) has a really wonderful explanation of compilers to give us context.
 
 > Most compilers break down into three primary stages: Parsing, Transformation, and Code Generation
 >
-> 1. _Parsing_ is taking raw code and turning it into a more abstract
->    representation of the code.
+> 1. _Parsing_ is taking raw code and turning it into a more abstract representation of the code.
 >
-> 2. _Transformation_ takes this abstract representation and manipulates to do
->    whatever the compiler wants it to.
+> 2. _Transformation_ takes this abstract representation and manipulates to do whatever the compiler wants it to.
 >
 > 3. _Code Generation_ takes the transformed representation of the code and
 >    turns it into new code.
->    From: [jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js#L103)
+
+_From: [jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js#L103)_
 
 ### Babel
 
 Babel is a special kind of compiler, a source-to-source compiler, also known as a "transpiler." We can see each of the three primary stages in action.
 
-1. Babel takes in JavaScript and handles the _parsing_ for us, handling JavaScript that uses recent features (think ES2018), converting the code into an abstract representation.
-2. It _transforms_ the abstract representation, removing more recent features and and replacing them with a more basic set of features.
+1. Babel takes in JavaScript and handles the _parsing_ for us, handling JavaScript that uses recent features (think ES2018) and converting the code into an abstract representation.
+2. It _transforms_ the abstract representation, removing more recent features and replacing them with a more basic set of features.
 3. It _generates_ JavaScript from the transformed representation, outputing code that is more widely understood by all browsers (think ES5).
 
 We generally don't need to worry about how Parsing or Code Generation is handled beyond this. The coolest part of the process is the Transformation, and what we use as a "more abstract representation of the code."
@@ -64,7 +67,7 @@ We can think of these tokens in the form of a tree:
 
 ![AST example](assets/tree.png)
 
-The nodes are represented here by their type, in red: `VariableDeclaration`, `VariableDeclarator`, `Identifier`, `BinaryExpression`, and `Literal`. These are all on the node as a `type` property.
+The nodes are represented here by their type, in red: `VariableDeclaration`, `VariableDeclarator`, `Identifier`, `BinaryExpression`, and `Literal`. These are defined on the node as a `type` property.
 
 The purple lines represent a parent-child relationship. The property where the child is referenced is in blue next to the line: `declarations`, `id`, `init`, `left`, and `right`.
 
