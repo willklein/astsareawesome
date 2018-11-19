@@ -77,8 +77,6 @@ The other blue text with colons are the descriptive properties for the node abov
 
 [AST Explorer](https://astexplorer.net/) is a web-based tool by [@fkling42](https://twitter.com/fkling42). It is the best way to explore ASTs and even play with writing our own linting rules, Babel transforms, or code mods.
 
-// TODO: link to other sections from the above sentence
-
 You can see everything above in a blank "program" in [AST Explorer](https://astexplorer.net/). Empty out the source code, then start exploring! Type out a `var`, a `function`, an `if` statement. See what happens when you change the `var` to a `const`. Explore.
 
 We'll come back to AST Explorer A LOT.
@@ -93,11 +91,26 @@ Most plugins care about one node type, but some subscribe to multiple types, eac
 
 Linters are a fantastic way to get started working with ASTs. It's all about looking at nodes in a tree and identifying patterns.
 
-ESLint was the first JS linter to make this all about detecting AST patterns with a plugin system. Each ESLint rule is its own plugin. One of my favorite examples is the nested ternary rule.
+[ESLint](https://eslint.org/) by [Nicholas C. Zakas](https://humanwhocodes.com/) was the first JS linter to make this all about detecting AST patterns with a plugin system. Each ESLint rule is its own plugin. One of my favorite examples is the [no nested ternary rule](https://eslint.org/docs/rules/no-nested-ternary) by [Ian Christian Myers](https://github.com/iancmyers).
 
-// TODO: add nested ternary example
+```javascript
+// 🤭
+condition
+  ? truthyCondition
+    ? truthyTruthyResult
+    : truthyFalsyResult
+  : falsyCondition
+  ? falsyTruthyResult
+  : falsyFalsyResult;
+```
 
-https://eslint.org/docs/developer-guide/working-with-rules
+[Detecting nested ternaries on AST Explorer](https://astexplorer.net/#/gist/d67e625e4414f4314a485178f5df56fe/ed23200fd274b35291c151b96245e3fd00d1d7dc)
+
+// TODO: Exposition on how to approach writing an ESLint rule
+
+The docs are pretty great too! https://eslint.org/docs/developer-guide/working-with-rules
+
+In case you use TypeScript, look at [eslint-plugin-typescript](https://github.com/bradzacher/eslint-plugin-typescript) for ESLint or [TSLint](https://palantir.github.io/tslint/)
 
 ## Babel
 
