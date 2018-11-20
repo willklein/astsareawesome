@@ -150,7 +150,7 @@ export default declare(api => {
 });
 ```
 
-The `ObjectProperty` node type will have a `shorthand` property. This is true when the shorthand is being used (`{ x }`), and false when it is unused (`{ x: x }`).
+Removing the shorthand property feature from the object is really a matter of turning it off. We set the `shorthand` property to `false on any`ObjectProperty`nodes. We only need to do this when the`shorthand` is already true.
 
 ### Write your own
 
