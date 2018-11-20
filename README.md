@@ -91,7 +91,7 @@ Most plugins care about one node type, but some subscribe to multiple types, eac
 
 Linters are a fantastic way to get started working with ASTs. It's all about looking at nodes in a tree and identifying patterns.
 
-[ESLint](https://eslint.org/) by [Nicholas C. Zakas](https://humanwhocodes.com/) was the first JS linter to make this all about detecting AST patterns with a plugin system. Each ESLint rule is its own plugin. One of my favorite examples is the [no nested ternary rule](https://eslint.org/docs/rules/no-nested-ternary) by [Ian Christian Myers](https://github.com/iancmyers).
+[ESLint](https://eslint.org/) by [Nicholas C. Zakas](https://humanwhocodes.com/) was the first JS linter to make this all about detecting AST patterns with a plugin system. Each ESLint rule is its own plugin. One of my favorite examples is detecting nested ternaries:
 
 ```javascript
 // 🤭
@@ -104,13 +104,41 @@ condition
   : falsyFalsyResult;
 ```
 
-[Detecting nested ternaries on AST Explorer](https://astexplorer.net/#/gist/d67e625e4414f4314a485178f5df56fe/ed23200fd274b35291c151b96245e3fd00d1d7dc)
+AST Explorer gives us a sandbox to write our own linting rules. Select Transform and then the latest version of ESLint available (ESLint v4 at the moment).
 
-// TODO: Exposition on how to approach writing an ESLint rule
+Every ESLint rule is essentially a function that returns an object. The object is a map of all the node types we care about linting, and the functions take those nodes as an argument. Then we can inspect the node's properties, including its children and their properties.
 
-The docs are pretty great too! https://eslint.org/docs/developer-guide/working-with-rules
+As with any ESLint rule, the problem is a matter of detecting a pattern. The pattern here would be a ternary inside a ternary. Ternaries in JavaScript show up as a `ConditionalExpression` node, so we need to look for a `ConditionalExpression` inside of a `ConditionalExpression`.
 
-In case you use TypeScript, look at [eslint-plugin-typescript](https://github.com/bradzacher/eslint-plugin-typescript) for ESLint or [TSLint](https://palantir.github.io/tslint/)
+![nested ternary example](assets/nested-ternary.png)
+A `ConditionalExpression` has three child properties:
+
+- a `test` for a condition
+- a `consequent` to be returned when the `test` is truthy
+- an `alternate` to be returned when the `test`
+
+We can check the `node.consequent.type` and the `node.alternate.type` to see if either are also a `ConditionalExpression`. Here's what the analyzer looks like:
+
+```javascript
+export default function(context) {
+  return {
+    ConditionalExpression(node) {
+      if (
+        node.consequent.type === "ConditionalExpression" ||
+        node.alternate.type === "ConditionalExpression"
+      ) {
+        context.report(node, "Do not use nested ternaries");
+      }
+    }
+  };
+}
+```
+
+View it on AST Explorer: [Detecting nested ternaries on AST Explorer](https://astexplorer.net/#/gist/d67e625e4414f4314a485178f5df56fe/23e2fe85dcf59bb8df80846525099486ed62ae4f)
+
+We've just implemented the [no nested ternary rule](https://eslint.org/docs/rules/no-nested-ternary) by [Ian Christian Myers](https://github.com/iancmyers). For more information on writing ESLint rules, check out the [ESLint Developer Guide -> Working with Rules](https://eslint.org/docs/developer-guide/working-with-rules)
+
+If you use TypeScript, look at [eslint-plugin-typescript](https://github.com/bradzacher/eslint-plugin-typescript) for ESLint or [TSLint](https://palantir.github.io/tslint/)
 
 ## Babel
 
