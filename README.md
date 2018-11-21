@@ -178,7 +178,7 @@ export default declare(api => {
 });
 ```
 
-Removing the shorthand property feature from the object is really a matter of turning it off. We set the `shorthand` property to `false on any`ObjectProperty`nodes. We only need to do this when the`shorthand` is already true.
+To remove the shorthand property feature from an object, we need to turn it off. We define a `ObjectProperty` in the visitor object, then with the node passed in, check if the `shorthand` property is true, and if so, set it to `false`.
 
 ### Write your own
 
@@ -189,10 +189,6 @@ Check out [Writing Your First Babel Plugin](https://github.com/jamiebuilds/babel
 Code mods are a great tool for updating syntax that has changed. Maybe you are changing from library A to library B, and the API methods are named differently and their arguments need to be updated as well. This conversion process can be automated with code mods.
 
 They are similar in approach to Babel plugins. You find a node, maybe check for a given pattern, then mutate the tree.
-
-### JSCodeShift
-
-One of the more popular code mod libraries adds some convenient APIs for mutating nodes in the tree.
 
 ### Example
 
