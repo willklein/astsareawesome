@@ -5,10 +5,15 @@
 What if it were possible to:
 
 - Reduce the time and effort of writing code?
-- Share best practices and eliminate anti-patterns, without requiring code review or pair programming?
+- Share and communicate best practices and eliminate anti-patterns?
 - Uptake new language features, upgrade dependencies with breaking changes, or even _migrate_ to a different library without manually editing _any_ code?
 
-We can (!), by extending our favorite JavaScript tools. This is something **anyone** can learn and **practice**. This site explains what is typically covered in an advanced-level computer science course, but in a focused, more accessible manner. We then relate what we learn to our tools, and look at how we can extend them with our own plugins, helping everyone be more effective developers.
+We can, by extending our favorite JavaScript tools! This is something **anyone** can learn and **practice**. This site explains what is typically covered in an advanced-level computer science course, but in a focused and more accessible manner.
+
+Let's go through:
+- how code is interpreted and understood by computers
+- how our tools work with ASTs
+- how we to extend those tools with our own plugins, helping everyone be more effective developers
 
 ## Compilers!
 
